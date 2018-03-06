@@ -4,11 +4,14 @@
     <title>Learn Enough JavaScript</title>
     <meta charset="utf-8">
     <script>
-      alert("hello, world!");
+      const daysOfTheWeek = ["Sunday", "Monday", "Tuesday", "Wednesday",
+                             "Thursday", "Friday", "Saturday"];
+      let now = new Date();
+      let dayname = daysOfTheWeek[now.getDay()];
+      alert(`Hello, world! Happy ${dayname}.`);
     </script>
   </head>
   <body>
-    <h1>Hello, world!</h1>
-    <p>This page includes an alert written in JavaScript.</p>
+
   </body>
 </html>
