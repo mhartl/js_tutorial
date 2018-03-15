@@ -1,6 +1,6 @@
-// Reverses a string.
-function reverse(string) {
-  return string.split("").reverse().join("");
+// Adds `reverse` to all strings.
+String.prototype.reverse = function() {
+  return Array.from(this).reverse().join("");
 }
 
 function Phrase(content) {
@@ -11,17 +11,6 @@ function Phrase(content) {
   }
 
   this.palindrome = function palindrome() {
-    return this.processedContent() === reverse(this.processedContent());
+    return this.processedContent() === this.processedContent().reverse();
   }
 }
-
-function TranslatedPhrase(content, translation) {
-  this.content = content;
-  this.translation = translation;
-
-  this.processedContent = function processedContent() {
-    return this.translation.toLowerCase();
-  }
-}
-
-TranslatedPhrase.prototype = new Phrase();
