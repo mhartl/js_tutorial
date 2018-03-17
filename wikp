@@ -1,0 +1,36 @@
+#!/usr/local/bin/node
+
+// Returns the paragraphs from a Wikipedia link, stripped of reference numbers.
+// Especially useful for text-to-speech (both native and foreign).
+
+let urllib = require("urllib");
+let url = process.argv[2];
+
+const jsdom = require("jsdom");
+const { JSDOM } = jsdom;
+
+urllib.request(url, { followRedirect: true }, function(err, data, res) {
+  if (err) {
+    throw err;
+  }
+  let sourceHTML = data.toString();
+
+  // Simulate a Document Object Model.
+  // const dom = new JSDOM(sourceHTML);
+  const { document } = (new JSDOM(sourceHTML)).window;
+  // let document = dom.window.document;
+
+  // Grab all the paragraphs and reference.
+  let paragraphs = document.querySelectorAll("p");
+  let references = document.querySelectorAll(".reference")
+
+  // Remove any references.
+  references.forEach(function(reference) {
+    reference.remove();
+  })
+
+  // Print out all the paragraphs.
+  paragraphs.forEach(function(paragraph) {
+    console.log(paragraph.textContent + "\n");
+  })
+});
