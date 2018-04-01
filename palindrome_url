@@ -1,18 +1,14 @@
 #!/usr/local/bin/node
 
-let urllib = require("urllib");
-let Phrase = require("mhartl-palindrome");
-let url    = 'https://cdn.learnenough.com/phrases.txt'
+let request = require("request");
+let Phrase  = require("mhartl-palindrome");
+let url     = 'https://cdn.learnenough.com/phrases.txt'
 
-urllib.request(url, function(err, data, res) {
-  if (err) {
-    throw err;
-  }
-  let text  = data.toString();
-  let lines = text.split("\n");
+request(url, function(error, response, body) {
+  let lines = body.split("\n");
   let palindromes = lines.filter(line => new Phrase(line).palindrome());
 
   palindromes.forEach(function(palindrome) {
-    console.log(`palindrome detected: ${palindrome}`);
+    console.log("palindrome detected:", palindrome);
   });
 });

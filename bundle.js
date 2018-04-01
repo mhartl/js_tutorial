@@ -23,34 +23,20 @@ function Phrase(content) {
 
   // Returns true if the phrase is a palindrome, false otherwise.
   this.palindrome = function palindrome() {
-    return this.processedContent() === this.processedContent().reverse();
+    if (this.letters()) {
+      return this.processedContent() === this.processedContent().reverse();
+    } else {
+      return false;
+    }
   }
 }
 
 
 },{}],2:[function(require,module,exports){
+
 let Phrase = require("mhartl-palindrome");
 
-function palindromeTester() {
-  event.preventDefault();
+alert(new Phrase("Madam, I'm Adam.").palindrome());
 
-  let phrase = new Phrase(event.target.phrase.value);
-  let palindromeResult = document.querySelector("#palindromeResult");
-
-  if (phrase.palindrome()) {
-    palindromeResult.innerHTML = `"${phrase.content}" is a palindrome!`;
-  } else {
-    palindromeResult.innerHTML = `"${phrase.content}" is a not a palindrome.`;
-  }
-
-  return false;
-}
-
-document.addEventListener("DOMContentLoaded", function() {
-  let tester = document.querySelector("#palindromeTester");
-  tester.addEventListener("submit", function() {
-    palindromeTester(event);
-  });
-});
 
 },{"mhartl-palindrome":1}]},{},[2]);

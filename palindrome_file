@@ -7,6 +7,6 @@ let text = fs.readFileSync("phrases.txt", "utf8");
 text.split("\n").forEach(function (line) {
   let phrase = new Phrase(line);
   if (phrase.palindrome()) {
-    console.log(`palindrome detected: ${line}`);
+    console.log("palindrome detected:", line);
   }
 });
