@@ -67,11 +67,11 @@ function imperativeLengths(states) {
 }
 console.log(imperativeLengths(states));
 
-// // reduce object: Functional solution
-// function functionalLengths(states) {
-//   return states.reduce((lengths, state) => {
-//                           lengths[state] = state.length;
-//                           return lengths;
-//                         }, {});
-// }
-// console.log(functionalLengths(states));
+// reduce object: Functional solution
+function functionalLengths(states) {
+  return states.reduce((lengths, state) => {
+                          lengths[state] = state.length;
+                          return lengths;
+                        }, {});
+}
+console.log(functionalLengths(states));
